@@ -2,7 +2,7 @@
   <div>
     <TheHeader />
     <div class="wrapper">
-      <nuxt class="container" />>
+      <nuxt class="container" />
     </div>
   </div>
 </template>
