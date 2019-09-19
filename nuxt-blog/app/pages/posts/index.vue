@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.post-page .el-table__row {
+.posts-page .el-table__row {
   cursor: pointer;
 }
 </style>
