@@ -41,5 +41,10 @@ export const actions = {
     })
     const newUser = await this.$axios.$put(`/users/${user.id}.json`, user)
     commit('setUser', { user: newUser })
+  },
+  async removeLikeLogToUser({ commit }, { user, post }) {
+    user.likes = post.likes.filter(like => like.user_id !== user.id) || []
+    const newUser = await this.$axios.$put(`/users/${user.id}.json`, user)
+    commit('serUser', { user: newUser })
   }
 }

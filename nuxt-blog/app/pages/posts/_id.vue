@@ -8,9 +8,9 @@
         </div>
         <p>{{post.body}}</p>
         <p class="text-right">
-          <el-button :disabled="!idLoggedIn" type="warning" v-if="isLiked" @click="unlike" round>
-             <span class="el-icon-star-on"></span>
-             <span>{{post.likes.length}}</span>
+          <el-button :disabled="!isLoggedIn" type="warning" v-if="isLiked" @click="unLike" round>
+            <span class="el-icon-star-on"></span>
+            <span>{{post.likes.length}}</span>
           </el-button>
           <el-button :disabled="!isLoggedIn" type="warning" v-else @click="like" round>
             <span class="el-icon-star-off"></span>
@@ -74,10 +74,12 @@ export default {
       if (!this.isLoggedIn) {
         return
       }
-      // TODO いいね取り消し処理
+      const likePayload = { user: this.user, post: this.post }
+      this.removeLikeToPost(cloneDeep(likePayload))
+      this.removeLikeLogToUser(cloneDeep(likePayload))
     },
-    ...mapActions(['addLikeLogToUser']),
-    ...mapActions('posts', ['addLikeToPost'])
+    ...mapActions(['addLikeLogToUser', 'removeLikeLogToUser']),
+    ...mapActions('posts', ['addLikeToPost', 'removeLikeToPost']),
   },
   filters: {
     time(val) {

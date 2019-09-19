@@ -56,5 +56,10 @@ export const actions = {
     })
     const newPost = await this.$axios.$put(`/posts/${post.id}.json`, post)
     commit('updatePost', { post: newPost })
+  },
+  async removeLikeToPost({ commit }, { user, post }) {
+    post.likes = post.likes.filter(like => like.user_id !== user.id) || []
+    const newPost = await this.$axios.$put(`posts/${post.id}.json`, post)
+    commit('updatePost', { post: newPost })
   }
 }
