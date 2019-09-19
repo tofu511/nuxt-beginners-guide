@@ -22,8 +22,10 @@ export const actions = {
     commit('setUser', { user })
   },
   async register({ commit }, { id }) {
-    const payload = []
+    const payload = {}
     payload[id] = { id }
+    console.log(payload)
+    console.log(`${id}`)
     await this.$axios.$patch(`/users.json`, payload)
     const user = await this.$axios.$get(`/users/${id}.json`)
     if (!user.id) throw new Error('Invalid user')

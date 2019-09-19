@@ -41,7 +41,11 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios'
   ],
+  axios: {
+    baseURL: 'https://nuxt-blog-2ef70.firebaseio.com/'
+  },
   /*
   ** Build configuration
   */
@@ -52,9 +56,6 @@ export default {
     */
     extend (config, ctx) {
     }
-  },
-  axios: {
-    baseURL: 'https://nuxt-blog-2ef70.firebaseio.com'
   },
   router: {
     middleware: ['auth-cookie']
